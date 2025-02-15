@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Longest String</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script type="text/javascript" src="activities.js"></script>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <h1>Longest String</h1>
+            <form id="longest-form">
+                <div class="form-layout">
+                    <label for="longest">Enter strings:</label>
+                    <input id="longest" name="longest" type="text" placeholder="eg. hello, world, napier">
+                    <button type="submit" id="submit-longest">Submit</button>
+                </div>
+            </form>
+            <p>Longest string: <span id="result"></span></p>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('submit-longest').addEventListener('click', function (event) {
+                event.preventDefault(); // Prevents form refresh
+
+                let longestInput = document.getElementById('longest');
+                let longest_array = longestInput.value.split(", "); // Corrected ID
+                let longest_string = longestString(longest_array); // Assuming this function exists in activities.js
+
+                document.getElementById('result').innerText = longest_string;
+                longestInput.value = "";
+            });
+        });
+    </script>
+</body>
+
+</html>

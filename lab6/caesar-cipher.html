@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caesar Cipher</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script type="text/javascript" src="activities.js"></script>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <h1>Caesar Cipher</h1>
+            <form id="cipher-form">
+                <div class="form-layout">
+                    <label for="cipher">Enter a string:</label>
+                    <input id="cipher" name="cipher" type="text" placeholder="eg. hello">
+                    <button type="submit" id="submit-cipher">Submit</button>
+                </div>
+            </form>
+            <p>Result: <span id="result"></span></p>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('submit-cipher').addEventListener('click', function (event) {
+                event.preventDefault(); // Prevents form refresh
+
+                let cipherInput = document.getElementById('cipher');
+                let cipher = cipherInput.value; // Corrected ID
+                let encode = caesarCipher(cipher); // Assuming this function exists in activities.js
+
+                document.getElementById('result').innerText = encode;
+                cipherInput.value = "";
+            });
+        });
+    </script>
+</body>
+
+</html>

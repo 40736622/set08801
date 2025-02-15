@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Audio in JS</title>
+
+</head>
+
+<body>
+
+    <button id="audio" onclick="playBeeps()">Audio</button>
+    <button id="bittunes" onclick="playBitTunes()">Bit Tunes</button>
+    <button id="theremin" onclick="playTheremin()">Theremin</button>
+
+    <script>
+        function playBeeps() {
+            var context = new (window.AudioContext || window.webkitAudioContext)();
+            var oscillator = context.createOscillator();
+            oscillator.type = "sine";
+            oscillator.frequency.value = 440;
+
+            // Connect the oscillator to the destination (speakers)
+            oscillator.connect(context.destination);
+
+            oscillator.start();
+
+            // Stop after 1 second to avoid continuous sound
+            oscillator.stop(context.currentTime + 1);
+        }
+
+        function playBitTunes() {
+            with (new AudioContext) {
+                for (i in D = [12, , , 13, , , 18, , , , , , 12, , , 13, , , 18, , , , , 12, , , 13, , , 18, , , 15, , , 12, , , 8, , , 12, , , 13]) {
+                    with (createOscillator()) {
+                        if (D[i]) {
+                            onended = function () {
+                                console.log("Note has stopped playing");
+                            }
+                            connect(destination)
+                            frequency.value = 800 * 1.06 ** (13 - D[i]),
+                                type = "square",
+                                start(i * .1),
+                                stop(i * .1 + .1)
+                        }
+                    }
+                }
+            }
+        }
+
+        function playTheremin() {
+            var context = new (window.AudioContext || window.webkitAudioContext)();
+            var oscillator = context.createOscillator();
+            h = window.innerHeight;
+            oscillator.connect(context.destination);
+            oscillator.start(0);
+            document.addEventListener("mousemove", function(e) {
+                oscillator.frequency.value = e.clientY / h * 1000 + 300;
+            })
+        }
+    </script>
+
+</body>
+
+</html>

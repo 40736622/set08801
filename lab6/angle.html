@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angles</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script type="text/javascript" src="activities.js"></script>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <h1>Angles</h1>
+            <form id="angle-form">
+                <div class="form-layout">
+                    <label for="angle">Enter an angle:</label>
+                    <input id="angle" name="angle" type="number" placeholder="eg.90">
+                    <button type="submit" id="submit-angle">Submit</button>
+                </div>
+            </form>
+            <p>Result: <span id="result"></span></p>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('submit-angle').addEventListener('click', function (event) {
+                event.preventDefault(); // Prevents form refresh
+
+                let angleInput = document.getElementById('angle');
+                let angle = angleInput.value; // Corrected ID
+                let angle_type = identifyAngleType(angle); // Assuming this function exists in activities.js
+
+                document.getElementById('result').innerText = angle_type + ".";
+                angleInput.value = "";
+            });
+        });
+    </script>
+</body>
+
+</html>
