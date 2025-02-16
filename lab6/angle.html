@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Angles</title>
     <link rel="stylesheet" href="style.css" type="text/css">
-    <script type="text/javascript" src="activities.js"></script>
+    <script type="text/javascript" src="activities.js" async></script>
 </head>
 
 <body>
@@ -33,7 +33,7 @@
                 let angle = angleInput.value; // Corrected ID
                 let angle_type = identifyAngleType(angle); // Assuming this function exists in activities.js
 
-                document.getElementById('result').innerText = angle_type + ".";
+                document.getElementById('result').innerText = angle_type;
                 angleInput.value = "";
             });
         });

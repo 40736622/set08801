@@ -18,25 +18,28 @@ span {
 }
 
 input {
-    width: 50%;
+    width: auto;
     padding: 12px 15px;
     border-radius: 5px;
     border-style: none;
 }
 
 button {
-    width: 30%;
+    width: auto; /* Makes the button adjust based on text */
+    
     padding: 12px 15px;
     background-color: #A27B5C;
     color: #DDD;
     border-radius: 5px;
     border-style: none;
+    outline: 2px solid transparent;
+    text-align: center;
+    white-space: nowrap;
 }
 
 button:hover {
-    border-style: solid;
-    border-color: #DDD;
-    color: rgb(111, 111, 110);
+    outline-color: #DDD;
+    color: rgb(148, 148, 144);
     cursor: pointer;
 }
 

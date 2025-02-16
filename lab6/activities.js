@@ -1,6 +1,6 @@
 // 0 < a < 90 acute, a = 90 right angle, 90 < a < 180 obtuse, a = 180 straight, 180 < a < 360 reflex, a = 360 full
 function identifyAngleType(angle) {
-    if (angle <= 0) {
+    if (angle <= 0 || angle > 360) {
         return "Invalid Angle"
     } else if (angle > 0 && angle < 90) {
         return "Acute Angle";
