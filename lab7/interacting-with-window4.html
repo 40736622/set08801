@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Interacting with the Window</title>
+</head>
+
+<body>
+    <div id="output"></div>
+
+    <script>
+        var out = document.getElementById("output");
+        out.innerHTML += window.navigator.appName + " - " + window.navigator.appVersion + " - " + window.navigator.appCodeName;
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Interacting with the Window</title>
+</head>
+
+<body>
+    <div id="output"></div>
+
+    <script>
+        var out = document.getElementById("output");
+        out.innerHTML += "Href: " + window.location.href + "<br>Protocol: " + window.location.protocol + "<br>Host: " + window.location.host + "<br>Path:" + window.location.pathname + "<br>Hash: " + window.location.hash;
+    </script>
+</body>
+
+</html>

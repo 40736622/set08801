@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style type="text/css">
+        p {
+            color: red
+        }
+    </style>
+    <title>SET08101 - Interacting with the DOM</title>
+</head>
+
+<body>
+    <p><a href="#" onClick="colourChanger();">Click Me</a></p>
+    <h1>OUTPUT:</h1>
+    <p id="redPara">I am <span id="current-color">RED</span></p>
+
+    <script>
+        var colors = ["red", "blue", "green", "purple", "yellow"]
+        var currentIndex = 0;
+
+        function colourChanger() {
+            currentIndex = (currentIndex + 1) % colors.length;
+            var current = colors[currentIndex];
+
+            document.getElementById("redPara").style.color = current;
+            document.getElementById("current-color").innerHTML = current.toUpperCase();
+        }
+    </script>
+</body>
+
+</html>
