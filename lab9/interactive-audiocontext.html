@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Audio Context</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/audiocontext.css">
+    <script src="assets/js/audiocontext.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Interactive Audio Context</h1>
+            <form class="form-layout">
+                <div class="radio-layout">
+                    <div class="radio">
+                        <input type="radio" name="wave" id="sine" value="sine" checked />
+                        <label for="sine">Sine</label>
+                    </div>
+                    <div class="radio">
+                        <input type="radio" name="wave" id="square" value="square" />
+                        <label for="square">Square</label>
+                    </div>
+                    <div class="radio">
+                        <input type="radio" name="wave" id="sawtooth" value="sawtooth" />
+                        <label for="sawtooth">Sawtooth</label>
+                    </div>
+                    <div class="radio">
+                        <input type="radio" name="wave" id="triangle" value="triangle" />
+                        <label for="triangle">Triangle</label>
+                    </div>
+                </div>
+
+                <input type="range" name="frequency" id="frequency" min="1" max="2000" value="440" />
+                <p>Value: <span id="freq-value"></span></p>
+
+                <button id="mute" type="button"><i id="icon" class="bi bi-play-fill"></i></button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

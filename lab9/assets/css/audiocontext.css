@@ -1,0 +1,88 @@
+:root {
+    --bg: #f5f7fa; /* Light neutral background */
+    --brdr: #d1d9e6; /* Subtle border */
+    --primary: #4CAF50; /* Primary green */
+    --secondary: #FFC107; /* Accent yellow */
+    --text: #333333; /* Main text */
+    --subtext: #666666; /* Subdued text */
+    --highlight: #FF7043; /* For highlights or alerts */
+    --card-bg: #ffffff; /* Card background */
+    --button-bg: #4CAF50; /* Button background */
+    --button-hover: #45A049; /* Button hover */
+    --accent: #2196F3; /* Blue accent */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1, p, span {
+    color: var(--text);
+}
+
+input[type='radio'] {
+    accent-color: var(--accent);
+}
+
+button {
+    background-color: var(--button-bg);
+    border: none;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    font-size: 16px;
+    margin: 10px 2px;
+    width: 25%;
+    border-radius: 12px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--button-hover);
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg);
+}
+
+.card {
+    margin: 0px 10px;
+    padding: 1rem;
+    border: 2px solid var(--brdr);
+    border-radius: 8px;
+    background-color: var(--card-bg);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.radio-layout {
+    padding: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.radio {
+    padding: 5px 0;
+    display: flex;
+    gap: 5px;
+}
