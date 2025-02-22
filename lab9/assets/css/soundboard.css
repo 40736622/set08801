@@ -23,7 +23,7 @@ h1 {
     border-radius: 12px;
     display: inline-grid;
     grid-template-columns: auto auto auto auto;
-    gap: 10px;
+    gap: 15px;
     padding: 0.6rem;
     box-shadow: 4px 4px #999;
 }
