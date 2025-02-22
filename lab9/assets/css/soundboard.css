@@ -1,0 +1,50 @@
+:root {
+    --black: #190000;
+    --hover-button: #191919;
+    --active-button: #180102;
+    --red: #FF0000;
+}
+
+h1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.soundboard-layout {
+    background-color: var(--black);
+    border-radius: 12px;
+    display: inline-grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 10px;
+    padding: 0.6rem;
+    box-shadow: 4px 4px #999;
+}
+
+div.soundboard-layout>button {
+    background-color: var(--black);
+    border-style: solid;
+    border-color: var(--red);
+    border-radius: 12px;
+    border-width: 3px;
+    outline: none;
+    padding: 2rem;
+    cursor: pointer;
+    box-shadow: 0 4px #999;
+}
+
+div.soundboard-layout>button:hover {
+    background-color: var(--hover-button);
+}
+
+div.soundboard-layout>button:active {
+    background-color: var(--active-button);
+    transform: translateY(4px);
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+
+<body>
+
+    <script>
+
+        window.onload = function () {
+
+            var audio = new (window.AudioContext || window.webkitAudioContext)();
+
+            position = 0,
+
+                scale = { b: 233, c: 261, d: 293, e: 329, f: 349, g: 391, A: 440, B: 493, C: 523, D: 587, E: 659, F: 698, G: 783, a: 880 },
+
+                song = "EE-E-CE-G---g--C-g--e--A-B-BA-gEGaFG-E-CDB--C--g--eA-B-BA-gEGaFG-E-CDB";
+
+            setInterval(play, 250);
+
+
+
+            function createOscillator(freq) {
+
+                var attack = 10, decay = 250, osc = audio.createOscillator();
+
+                osc.frequency.value = freq;
+
+                osc.type = "square";
+
+                osc.connect(audio.destination);
+
+                osc.start(0);
+
+
+
+                setTimeout(function () {
+
+                    osc.stop(0);
+
+                    osc.disconnect(audio.destination);
+
+                }, decay)
+
+            }
+
+
+
+            function play() {
+
+                var note = song.charAt(position), freq = scale[note];
+
+                position += 1;
+
+                if (position >= song.length) { position = 0; }
+
+                if (freq) { createOscillator(freq); }
+
+            }
+
+        };
+
+    </script>
+
+</body>
+
+</html>

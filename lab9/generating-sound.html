@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+
+<body>
+
+    <button onclick="mute()" type="button">MUTE</button>
+
+    <script>
+
+        var context = new (window.AudioContext || window.webkitAudioContext)();
+
+        var gain = context.createGain();
+
+        gain.connect(context.destination);
+
+        gain.gain.setValueAtTime(0, context.currentTime);
+
+        var oscillator = context.createOscillator();
+
+        oscillator.connect(gain);
+
+        oscillator.start();
+
+        function mute() {
+
+            if (gain.gain.value == 0) { gain.gain.setValueAtTime(1, context.currentTime); }
+
+            else { gain.gain.setValueAtTime(0, context.currentTime) }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
