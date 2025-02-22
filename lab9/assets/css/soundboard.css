@@ -28,7 +28,7 @@ h1 {
     box-shadow: 4px 4px #999;
 }
 
-div.soundboard-layout>button {
+.soundboard-layout>button {
     background-color: var(--black);
     border-style: solid;
     border-color: var(--red);
@@ -40,11 +40,11 @@ div.soundboard-layout>button {
     box-shadow: 0 4px #999;
 }
 
-div.soundboard-layout>button:hover {
+.soundboard-layout>button:hover {
     background-color: var(--hover-button);
 }
 
-div.soundboard-layout>button:active {
+.soundboard-layout>button:active {
     background-color: var(--active-button);
     transform: translateY(4px);
 }
