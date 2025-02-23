@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Form</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        h2,
+        label {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        button {
+            margin-top: 5px;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            background-color: aquamarine;
+            color: white;
+        }
+
+        button:hover {
+            background-color: aqua;
+            cursor: pointer;
+        }
+
+        input[type="text"] {
+            border-radius: 5px;
+            padding: 5px;
+            margin: 5px 0;
+        }
+
+        .container {
+            width: auto;
+            height: 100vh;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            width: 90%;
+            max-width: 400px;
+            height: auto;
+            padding: 1rem;
+            border: 3px solid black;
+            border-radius: 5px;
+            box-shadow: 18px 15px 5px gray;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 5px;
+        }
+
+        .form-group {
+            padding: 5px;
+        }
+
+        .form-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-radio {
+            padding-right: 30px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .form-radio label {
+            margin-left: 0.5rem;
+        }
+
+        @media (max-width: 300px) {
+            .card {
+                box-shadow: 10px 7px 5px gray;
+                /* Softer shadow on small screens */
+            }
+
+            .form-radio {
+                flex-direction: column;
+                align-items: flex-start;
+                /* Stack radio buttons vertically */
+            }
+
+            .form-radio .form-group {
+                display: flex;
+                flex-direction: row;
+                gap: 5px;
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <div class="card">
+            <h2>User Form</h2>
+            <form class="form">
+                <div class="form-group form-text">
+                    <label>What is your first name?</label>
+                    <input type="text" id="firstname" name="firstname">
+                </div>
+
+                <label>How are you feeling?</label>
+                <div class="form-radio">
+                    <div class="form-group form-radio">
+                        <input type="radio" id="happy" name="emotion" value="happy" checked>
+                        <label for="happy">Happy</label>
+                    </div>
+                    <div class="form-group form-radio">
+                        <input type="radio" id="sad" name="emotion" value="sad">
+                        <label for="sad">Sad</label>
+                    </div>
+                </div>
+
+                <button type="button">Submit</button>
+            </form>
+        </div>
+    </main>
+    <script>
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function checkCookie() {
+            let firstname = getCookie("firstname");
+            let emotion = getCookie("emotion");
+            if (firstname != "" && emotion != "") {
+                alert(`Hi ${firstname}! Last time we checked, you were ${emotion}.`);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            checkCookie();
+
+            document.querySelector("button").addEventListener("click", (e) => {
+                e.preventDefault();
+
+                let firstname = document.getElementById("firstname").value;
+                let emotion = document.querySelector("input[name='emotion']:checked").value;
+
+                setCookie("firstname", firstname, 1);
+                setCookie("emotion", emotion, 1);
+            });
+        });
+    </script>
+</body>
+
+</html>
