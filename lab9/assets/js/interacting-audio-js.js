@@ -1,8 +1,12 @@
-let ao = document.getElementById("my_audio");
+let ao = document.getElementById("my-audio");
 let rangeDuration = document.getElementById("duration");
 let audioProgress = document.getElementById("audio-progress");
-let playBtn = document.getElementById("playBtn");
+let playBtn = document.getElementById("play-btn");
+let toggleBtn = document.getElementById("toggle-btn")
 let muteButton = document.getElementById("mute-btn");
+let playBtnIcon = document.getElementById("icon");
+let toggleIcon = document.getElementById("toggle-icon");
+let muteIcon = document.getElementById("mute-icon");
 
 ao.load();
 
@@ -31,6 +35,14 @@ ao.addEventListener("timeupdate", (e) => {
     audioProgress.innerHTML = `${minutes}:${seconds}`;
 });
 
+/** 
+ * Event Listener that adds the play icon and remove the pause icon once the audio has ended.
+*/
+ao.addEventListener("ended", () => {
+    playBtnIcon.classList.remove("bi-pause-fill");
+    playBtnIcon.classList.add("bi-play-fill");
+});
+
 /**
  * Event Listener for range input, that adds seeking functionality.
 */
@@ -42,7 +54,6 @@ rangeDuration.addEventListener("change", (e) => {
  * Function that plays and pauses the audio file. It also switches the icon depending on the playing state.
 */
 function playPause() {
-    let playBtnIcon = document.getElementById("icon");
     if (ao.paused) {
         ao.play();
 
@@ -61,30 +72,34 @@ function playPause() {
 /**
  * Function that toggles the looping of the audio file.
 */
-function toggle_loop() {
+function toggleLoop() {
     if (ao.loop) {
         ao.loop = false;
+
+        toggleBtn.title = "Loop";
+        toggleIcon.classList.remove("bi-slash-circle");
+        toggleIcon.classList.add("bi-arrow-repeat");
     } else {
         ao.loop = true;
+        toggleBtn.title = "Unloop";
+        toggleIcon.classList.remove("bi-arrow-repeat");
+        toggleIcon.classList.add("bi-slash-circle");
     }
-
-    ao.load();
 }
 
 /**
  * Function that toggles between mute and unmute for the audio file.
 */
 function mute() {
-    let muteIcon = document.getElementById("mute-icon");
     if (!ao.muted) {
         ao.muted = true;
         muteButton.title = "Unmute";
-        muteIcon.classList.remove("bi-volume-mute-fill");
-        muteIcon.classList.add("bi-volume-up-fill");
+        muteIcon.classList.remove("bi-volume-up-fill");
+        muteIcon.classList.add("bi-volume-mute-fill");
     } else {
         ao.muted = false;
         muteButton.title = "Mute";
-        muteIcon.classList.remove("bi-volume-up-fill");
-        muteIcon.classList.add("bi-volume-mute-fill");
+        muteIcon.classList.remove("bi-volume-mute-fill");
+        muteIcon.classList.add("bi-volume-up-fill");
     }
 }

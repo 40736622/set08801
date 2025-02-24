@@ -10,32 +10,26 @@
 </head>
 
 <body>
-
-    <audio id="my_audio" preload="metadata" loop controls>
-        <source src="assets/audio/Your Own Fault - Nademonogatari OST.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-
-    <br>
-
-    <div class="container">
-        <div class="audio-player">
-            <button id="playBtn" onclick="playPause();" type="button" title="Play"><i id="icon"
-                    class="bi bi-play-fill"></i></button>
-            <div class="audio-duration">
-                <p><span id="audio-progress">0:00</span> / <span id="audio-end"></span></p>
+    <main>
+        <audio id="my-audio" preload="metadata" controls>
+            <source src="assets/audio/Your Own Fault - Nademonogatari OST.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <div class="container">
+            <div class="audio-player">
+                <button id="play-btn" onclick="playPause();" type="button" title="Play"><i id="icon"
+                        class="bi bi-play-fill"></i></button>
+                <div class="audio-duration">
+                    <p><span id="audio-progress">0:00</span> / <span id="audio-end"></span></p>
+                </div>
+                <input type="range" name="duration" id="duration" min="0" value="0">
+                <button id="toggle-btn" onclick="toggleLoop();" type="button" title="Loop"><i id="toggle-icon"
+                        class="bi bi-arrow-repeat"></i></button>
+                <button id="mute-btn" onclick="mute();" type="button" title="Mute"><i id="mute-icon"
+                        class="bi bi-volume-up-fill"></i></button>
             </div>
-            <input type="range" name="duration" id="duration" min="0" value="0">
-            <button onclick="toggle_loop();" type="button" title="Loop"><svg xmlns="http://www.w3.org/2000/svg"
-                    width="16" height="16" fill="currentColor" class="bi bi-repeat" viewBox="0 0 16 16">
-                    <path
-                        d="M11 5.466V4H5a4 4 0 0 0-3.584 5.777.5.5 0 1 1-.896.446A5 5 0 0 1 5 3h6V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192m3.81.086a.5.5 0 0 1 .67.225A5 5 0 0 1 11 13H5v1.466a.25.25 0 0 1-.41.192l-2.36-1.966a.25.25 0 0 1 0-.384l2.36-1.966a.25.25 0 0 1 .41.192V12h6a4 4 0 0 0 3.585-5.777.5.5 0 0 1 .225-.67Z" />
-                </svg></button>
-            <button id="mute-btn" onclick="mute();" type="button" title="Mute"><i id="mute-icon"
-                    class="bi bi-volume-mute-fill"></i></button>
         </div>
-    </div>
-
+    </main>
 </body>
 
 </html>

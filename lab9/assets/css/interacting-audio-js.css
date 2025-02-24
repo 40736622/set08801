@@ -13,12 +13,24 @@ span {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
+i {
+    font-size: 1.5rem;
+}
+
 button {
     width: 3rem;
     height: 3rem;
     border: none;
     border-radius: 50%;
-    background-color: antiquewhite;
+    background-color: #f2f3f5;
+}
+
+button:hover {
+    background-color: #a7a9ac;
+}
+
+input[type="range"] {
+    accent-color: black;
 }
 
 .container {
