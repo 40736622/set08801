@@ -15,18 +15,28 @@
             <source src="assets/audio/Your Own Fault - Nademonogatari OST.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
+
         <div class="container">
             <div class="audio-player">
+
                 <button id="play-btn" onclick="playPause();" type="button" title="Play"><i id="icon"
                         class="bi bi-play-fill"></i></button>
+
                 <div class="audio-duration">
                     <p><span id="audio-progress">0:00</span> / <span id="audio-end"></span></p>
                 </div>
+
                 <input type="range" name="duration" id="duration" min="0" value="0">
+
                 <button id="toggle-btn" onclick="toggleLoop();" type="button" title="Loop"><i id="toggle-icon"
                         class="bi bi-arrow-repeat"></i></button>
-                <button id="mute-btn" onclick="mute();" type="button" title="Mute"><i id="mute-icon"
-                        class="bi bi-volume-up-fill"></i></button>
+
+                <div class="volume-controls">
+                    <input type="range" name="volume" id="volume" min="0" max="1" step="0.01" value="1">
+                    
+                    <button id="mute-btn" onclick="mute();" type="button" title="Mute"><i id="mute-icon"
+                            class="bi bi-volume-up-fill"></i></button>
+                </div>
             </div>
         </div>
     </main>

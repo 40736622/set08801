@@ -61,3 +61,26 @@ input[type="range"] {
     justify-content: center;
     align-items: center;
 }
+
+.volume-controls {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#volume {
+    position: absolute;
+    left: -100px;
+    width: 80px; /* Slider length */
+    display: none;
+}
+
+.volume-controls:hover #volume,
+.volume-controls:hover #mute-btn {
+    display: block; /* Keep visible when hovering */
+}
+
+.volume-controls:hover #volume {
+    border: 5px solid dimgray;
+}

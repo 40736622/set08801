@@ -1,12 +1,13 @@
-let ao = document.getElementById("my-audio");
-let rangeDuration = document.getElementById("duration");
-let audioProgress = document.getElementById("audio-progress");
-let playBtn = document.getElementById("play-btn");
-let toggleBtn = document.getElementById("toggle-btn")
-let muteButton = document.getElementById("mute-btn");
-let playBtnIcon = document.getElementById("icon");
-let toggleIcon = document.getElementById("toggle-icon");
-let muteIcon = document.getElementById("mute-icon");
+const ao = document.getElementById("my-audio");
+const rangeDuration = document.getElementById("duration");
+const volume = document.getElementById("volume");
+const audioProgress = document.getElementById("audio-progress");
+const playBtn = document.getElementById("play-btn");
+const toggleBtn = document.getElementById("toggle-btn")
+const muteButton = document.getElementById("mute-btn");
+const playBtnIcon = document.getElementById("icon");
+const toggleIcon = document.getElementById("toggle-icon");
+const muteIcon = document.getElementById("mute-icon");
 
 ao.load();
 
@@ -14,12 +15,10 @@ ao.load();
  * Event Listener that formats the span text to match the total duration of the audio file
 */
 ao.addEventListener("loadedmetadata", () => {
+    // Setting range max attribute
     rangeDuration.max = ao.duration;
-    // Format duration as MM:SS
-    let minutes = Math.floor(ao.duration / 60);
-    let seconds = Math.floor(ao.duration % 60).toString().padStart(2, '0');
 
-    document.getElementById("audio-end").innerHTML = `${minutes}:${seconds}`;
+    document.getElementById("audio-end").textContent = formatTime(ao.duration);
 });
 
 /**
@@ -27,12 +26,9 @@ ao.addEventListener("loadedmetadata", () => {
  * for the audio file.
 */
 ao.addEventListener("timeupdate", (e) => {
-    let minutes = Math.floor(e.target.currentTime / 60);
-    let seconds = Math.floor(e.target.currentTime % 60).toString().padStart(2, '0');
-
     rangeDuration.value = e.target.currentTime;
 
-    audioProgress.innerHTML = `${minutes}:${seconds}`;
+    audioProgress.textContent = formatTime(e.target.currentTime);
 });
 
 /** 
@@ -44,10 +40,17 @@ ao.addEventListener("ended", () => {
 });
 
 /**
- * Event Listener for range input, that adds seeking functionality.
+ * Event Listener for duration range input, that adds seeking functionality.
 */
-rangeDuration.addEventListener("change", (e) => {
+rangeDuration.addEventListener("input", (e) => {
     ao.currentTime = e.target.value;
+});
+
+/**
+ * Event Listener for volume range input, that adds volume functionality.
+*/
+volume.addEventListener("input", (e) => {
+    ao.volume = e.target.value;
 });
 
 /**
@@ -58,14 +61,12 @@ function playPause() {
         ao.play();
 
         playBtn.title = "Pause";
-        playBtnIcon.classList.remove("bi-play-fill");
-        playBtnIcon.classList.add("bi-pause-fill");
+        swapIcon(playBtnIcon, "bi-play-fill", "bi-pause-fill");
     } else {
         ao.pause();
 
         playBtn.title = "Play";
-        playBtnIcon.classList.remove("bi-pause-fill");
-        playBtnIcon.classList.add("bi-play-fill");
+        swapIcon(playBtnIcon, "bi-pause-fill", "bi-play-fill");
     }
 }
 
@@ -77,13 +78,11 @@ function toggleLoop() {
         ao.loop = false;
 
         toggleBtn.title = "Loop";
-        toggleIcon.classList.remove("bi-slash-circle");
-        toggleIcon.classList.add("bi-arrow-repeat");
+        swapIcon(toggleIcon, "bi-slash-circle", "bi-arrow-repeat");
     } else {
         ao.loop = true;
         toggleBtn.title = "Unloop";
-        toggleIcon.classList.remove("bi-arrow-repeat");
-        toggleIcon.classList.add("bi-slash-circle");
+        swapIcon(toggleIcon, "bi-arrow-repeat", "bi-slash-circle");
     }
 }
 
@@ -94,12 +93,34 @@ function mute() {
     if (!ao.muted) {
         ao.muted = true;
         muteButton.title = "Unmute";
-        muteIcon.classList.remove("bi-volume-up-fill");
-        muteIcon.classList.add("bi-volume-mute-fill");
+        swapIcon(muteIcon, "bi-volume-up-fill", "bi-volume-mute-fill");
     } else {
         ao.muted = false;
         muteButton.title = "Mute";
-        muteIcon.classList.remove("bi-volume-mute-fill");
-        muteIcon.classList.add("bi-volume-up-fill");
+        swapIcon(muteIcon, "bi-volume-mute-fill", "bi-volume-up-fill");
     }
+}
+
+/**
+ * 
+ * @param {HTMLElement} iconElement - html element holding the icon
+ * @param {String} oldIcon - old icon that will be removed
+ * @param {String} newIcon - new icon that will be added
+ */
+function swapIcon(iconElement, oldIcon, newIcon) {
+    if (!iconElement.classList.contains(newIcon)) {
+        iconElement.classList.remove(oldIcon);
+        iconElement.classList.add(newIcon);
+    }
+}
+
+/**
+ * 
+ * @param {Number} seconds - time duration in seconds
+ * @returns {String} formatted string to represent time in MM:SS 
+ */
+function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = Math.floor(seconds % 60).toString().padStart(2, '0');
+    return `${minutes}:${remainingSeconds}`;
 }
