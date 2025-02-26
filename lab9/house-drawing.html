@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Drawing</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <span></span>
+    <canvas width="700" height="600"></canvas>
+    <script>
+        const canvas = document.querySelector("canvas");
+        const span = document.querySelector("span");
+
+        const context = canvas.getContext("2d");
+        context.lineWidth = 1;
+
+        /* House */
+        context.beginPath();
+        context.strokeStyle = "brown";
+
+        // House Body
+        context.rect(200, 400, 300, 300);
+
+        // Roof
+        context.moveTo(180, 400);
+        context.lineTo(520, 400);
+        context.lineTo(350, 200);
+        context.lineTo(180, 400);
+        context.moveTo(390, 600);
+
+        // Door
+        context.rect(380, 450, 80, 150);
+        context.moveTo(401, 520);
+        context.arc(395, 520, 7, 0, Math.PI * 2);
+
+        // Window
+        context.rect(240, 450, 60, 60);
+        context.moveTo(270, 450)
+        context.lineTo(270, 510);
+        context.moveTo(240, 480);
+        context.lineTo(300, 480);
+
+        context.stroke();
+
+        /* Sun */
+        context.beginPath();
+        context.strokeStyle = "yellow";
+        context.fillStyle = "yellow";
+
+        context.arc(120, 165, 35, 0, Math.PI * 2, true);
+        context.fill();
+
+        context.moveTo(130, 125);
+        context.lineTo(140, 95);
+
+        context.moveTo(154, 142);
+        context.lineTo(185, 126);
+
+        context.moveTo(161, 170);
+        context.lineTo(194, 175);
+
+        context.moveTo(147, 197);
+        context.lineTo(169, 215);
+
+        context.moveTo(122, 207);
+        context.lineTo(122, 236);
+
+        context.moveTo(95, 198);
+        context.lineTo(74, 219);
+
+        context.moveTo(79, 170);
+        context.lineTo(45, 176);
+
+        context.moveTo(94, 135);
+        context.lineTo(73, 111);
+
+        context.stroke();
+
+        // Event Listener that makes it easier to find x, y placement with mouse movement
+        canvas.addEventListener("mousemove", (event) => {
+            const x = event.clientX - canvas.getBoundingClientRect().left;
+            const y = event.clientY - canvas.getBoundingClientRect().top;
+
+            span.textContent = `X: ${x}, Y: ${y}`;
+        })
+
+    </script>
+</body>
+</html>
